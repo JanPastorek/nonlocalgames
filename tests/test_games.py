@@ -142,14 +142,12 @@ class TestDeterministicSolver(unittest.TestCase):
         self.assertEqual(len(best_combo), 2)
 
     def test_3player_deterministic(self):
-        """Test deterministic solver for 3-player GHZ-like game.
+        """Test deterministic solver for a simple 3-player game.
 
-        GHZ game: 3 players, 2 questions, 2 answers.
-        Win condition: a0 XOR a1 XOR a2 == (q0 OR q1 OR q2)
-        where questions are constrained: q0 XOR q1 XOR q2 == 0
-        For simplicity, we use a direct matrix representation.
+        3 players, 2 questions each, 2 answers each.
+        Win condition: players win if all answers are the same (all 0 or all 1),
+        regardless of the questions.
         """
-        # Simple 3-player game: players win if all answers match
         matrix = []
         for q in range(8):
             row = [0] * 8
